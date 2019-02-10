@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './api.service';
-import { Item } from './api.service';
+import { DataSet, ReadingsService } from './readings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +8,13 @@ import { Item } from './api.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'pwademo';
-  items: Array<Item>;
+  title = 'Data PWA';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {
-    this.fetchData();
-  }
+  ngOnInit() {}
 
-  fetchData() {
-    this.apiService.fetch()
-    .subscribe((data:Array<Item>) => {
-      console.log(data);
-      this.items = data;
-    }, (err) => {
-      console.log(err);
-    })
+  onHome() {
+    this.router.navigate(['sources']);
   }
 }
