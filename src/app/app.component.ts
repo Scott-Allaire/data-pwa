@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DataSet, ReadingsService } from './readings.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Data PWA';
+  title = 'Readings';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onHome() {
     this.router.navigate(['sources']);

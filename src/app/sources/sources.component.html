@@ -4,11 +4,8 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item role="listitem"
-                    *ngFor="let dataset of getDataset(source)"
-                    (click)="doDetails(source, dataset.code)">
-        {{dataset.code}}
-      </mat-list-item>
+      <button mat-button *ngFor="let dataset of getDataset(source)"
+              (click)="doDetails(source, dataset.code)">{{dataset.code}}</button>
     </mat-list>
   </mat-card-content>
 </mat-card>

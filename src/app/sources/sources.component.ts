@@ -12,7 +12,7 @@ export class SourcesComponent implements OnInit {
   sources: string[];
 
   constructor(private readingsService: ReadingsService,
-              private router: Router) { 
+              private router: Router) {
 
     }
 
@@ -22,12 +22,12 @@ export class SourcesComponent implements OnInit {
 
   fetchDataSets() {
     this.readingsService.fetchDataSets()
-    .subscribe((data:Map<string, DataSet[]>) => {
+    .subscribe((data: Map<string, DataSet[]>) => {
       this.datasets = new Map(Object.entries(data));
       this.sources = Array.from(this.datasets.keys());
     }, (err) => {
       console.log(err);
-    })
+    });
   }
 
   getDataset(source: string): DataSet[] {

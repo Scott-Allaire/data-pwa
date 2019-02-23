@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../environments/environment';
+import * as moment from 'moment';
 
 export interface DataSet {
   source: string;
@@ -33,8 +34,17 @@ export class ReadingsService {
     return <Observable<Reading[]>>this.httpClient.get(url);
   }
 
-  fetchDetail(source: string, code: string): Observable<Reading[]> {
-    const url = `${this.baseApiURL}/${source}/${code}`;
+  fetchDetail(source: string, code: string, start?: string, end?: string): Observable<Reading[]> {
+    let url = `${this.baseApiURL}/${source}/${code}`;
+
+    if (start) {
+      url += "?start=" + moment(start).format();
+
+      if (end) {
+        url += "&end=" + moment(end).format();
+      }
+    }
+
     return <Observable<Reading[]>>this.httpClient.get(url);
   }
 }

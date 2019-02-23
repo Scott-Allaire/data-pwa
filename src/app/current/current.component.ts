@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReadingsService, Reading } from '../readings.service';
 
 @Component({
-  selector: 'app-current/:source',
+  selector: 'app-current',
   templateUrl: './current.component.html',
   styleUrls: ['./current.component.scss']
 })
@@ -12,11 +12,11 @@ export class CurrentComponent implements OnInit {
   readings: Reading[] = [];
 
   constructor(private route: ActivatedRoute,
-    private readingsService: ReadingsService) { }
+              private readingsService: ReadingsService) { }
 
   ngOnInit() {
     this.source = this.route.snapshot.paramMap.get('source');
-    console.log("Current", this.source);
+    console.log('Current', this.source);
     this.fetchReadings();
   }
 
@@ -26,6 +26,6 @@ export class CurrentComponent implements OnInit {
         this.readings = data;
       }, (err) => {
         console.log(err);
-      })
+      });
   }
 }
