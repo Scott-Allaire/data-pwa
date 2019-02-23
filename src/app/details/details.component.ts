@@ -60,8 +60,6 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.source = this.route.snapshot.paramMap.get('source');
     this.code = this.route.snapshot.paramMap.get('code');
-    console.log('Details', [this.source, this.code]);
-
     this.fetchReadings();
   }
 
@@ -112,7 +110,6 @@ export class DetailsComponent implements OnInit {
               data: maxValues
             }];
 
-        console.log("Chart data", this.lineChartData);
       }, (err) => {
         console.log(err);
       });
